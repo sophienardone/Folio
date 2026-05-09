@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Folio</title>
+</head>
+<body>
+<h1>My Pages</h1>
+<a href="/pages/new">+ New Page</a>
+
+<ul>
+  <li th:each="page : ${pages}">
+    <a th:href="@{/pages/{id}(id=${page.id})}" th:text="${page.title}"></a>
+    <a th:href="@{/pages/delete/{id}(id=${page.id})}">Delete</a>
+  </li>
+</ul>
+</body>
+</html>
