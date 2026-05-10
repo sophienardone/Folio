@@ -7,8 +7,8 @@
 <body class="bg-light">
 <div class="container mt-5">
   <div class="card shadow-sm p-4">
-    <h2 class="fw-bold mb-4">New Page</h2>
-    <form action="/pages" method="post">
+    <h2 class="fw-bold mb-4" th:text="${parentId != null} ? 'New Sub Page' : 'New Page'"></h2>
+    <form th:action="${parentId != null} ? @{/pages/{parentId}/subpage(parentId=${parentId})} : @{/pages}" method="post">
       <div class="mb-3">
         <input type="text" name="title" class="form-control form-control-lg" placeholder="Page title"/>
       </div>

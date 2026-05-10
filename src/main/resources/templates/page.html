@@ -12,6 +12,18 @@
         <p class="text-muted" th:text="${page.content}"></p>
     </div>
 
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-bold">Sub Pages</h5>
+        <a th:href="@{/pages/{id}/new(id=${page.id})}" class="btn btn-sm btn-dark">+ Add Sub Page</a>
+    </div>
+    <div class="list-group mb-4">
+        <div th:each="subPage : ${page.subPages}" class="list-group-item">
+            <a th:href="@{/pages/{id}(id=${subPage.id})}" th:text="${subPage.title}" class="text-decoration-none text-dark fw-semibold"></a>
+        </div>
+    </div>
+    <p th:if="${#lists.isEmpty(page.subPages)}" class="text-muted mb-4">No sub pages yet.</p>
+
     <!-- Blocks -->
     <h5 class="fw-bold mb-3">Blocks</h5>
     <div th:each="block : ${blocks}" class="card mb-2 p-3">
