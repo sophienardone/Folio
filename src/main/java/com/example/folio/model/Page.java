@@ -25,6 +25,13 @@ public class Page {
     @JoinColumn(name = "workspace_id")
     private Workspace workspace;
 
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Page parent;
+
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
+    private List<Page> subPages = new ArrayList<>();
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -39,4 +46,10 @@ public class Page {
 
     public Workspace getWorkspace() { return workspace; }
     public void setWorkspace(Workspace workspace) { this.workspace = workspace; }
+
+    public Page getParent() { return parent; }
+    public void setParent(Page parent) { this.parent = parent; }
+
+    public List<Page> getSubPages() { return subPages; }
+    public void setSubPages(List<Page> subPages) { this.subPages = subPages; }
 }

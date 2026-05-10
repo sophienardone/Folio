@@ -35,4 +35,8 @@ public class PageService {
     public List<Page> searchPages(String keyword) {
         return pageRepository.findByTitleContainingIgnoreCase(keyword);
     }
+
+    public List<Page> getTopLevelPages() {
+        return pageRepository.findByParentIsNull();
+    }
 }

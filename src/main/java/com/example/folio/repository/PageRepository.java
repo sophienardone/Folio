@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface PageRepository extends JpaRepository<Page, Long> {
     List<Page> findByTitleContainingIgnoreCase(String title);
+
+    List<Page> findByParentIsNull();
 }
