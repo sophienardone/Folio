@@ -21,7 +21,7 @@ public class PageController {
 
     @GetMapping("/pages")
     public String getAllPages(Model model) {
-        model.addAttribute("pages", pageService.getAllPages());
+        model.addAttribute("pages", pageService.getTopLevelPages());
         return "pages";
     }
 @GetMapping("/pages/{id}")
@@ -73,5 +73,19 @@ public String getPage(@PathVariable Long id, Model model) {
         model.addAttribute("pages", pageService.searchPages(keyword));
         model.addAttribute("keyword", keyword);
         return "pages";
+    }
+
+    @GetMapping("/pages/{id}/new")
+    public String newSubPageForm(@PathVariable Long id, Model model) {
+        model.addAttribute("page", new Page());
+        model.addAttribute("parentId", id);
+        return "page-form";
+    }
+
+    @PostMapping("/pages/{parentId}/subpage")
+    public String saveSubPage(@PathVariable Long parentId, @ModelAttribute Page page) {
+        page.setParent(pageService.getPageById(parentId));
+        pageService.savePage(page);
+        return "redirect:/pages/" + parentId;
     }
 }
