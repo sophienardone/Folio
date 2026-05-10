@@ -2,6 +2,9 @@ package com.example.folio.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "pages")
 public class Page {
@@ -14,6 +17,9 @@ public class Page {
 
     private String content;
 
+    @OneToMany(mappedBy = "page", cascade = CascadeType.ALL)
+    private List<Block> blocks = new ArrayList<>();
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -22,4 +28,7 @@ public class Page {
 
     public String getContent() { return content; }
     public void setContent(String content) { this.content = content; }
+
+    public List<Block> getBlocks() { return blocks; }
+    public void setBlocks(List<Block> blocks) { this.blocks = blocks; }
 }
