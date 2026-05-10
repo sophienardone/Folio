@@ -31,4 +31,8 @@ public class PageService {
     public void deletePage(Long id) {
         pageRepository.deleteById(id);
     }
+
+    public List<Page> searchPages(String keyword) {
+        return pageRepository.findByTitleContainingIgnoreCase(keyword);
+    }
 }
