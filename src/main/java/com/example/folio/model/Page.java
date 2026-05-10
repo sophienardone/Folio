@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "pages")
+
 public class Page {
 
     @Id
@@ -20,6 +21,10 @@ public class Page {
     @OneToMany(mappedBy = "page", cascade = CascadeType.ALL)
     private List<Block> blocks = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "workspace_id")
+    private Workspace workspace;
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -31,4 +36,7 @@ public class Page {
 
     public List<Block> getBlocks() { return blocks; }
     public void setBlocks(List<Block> blocks) { this.blocks = blocks; }
+
+    public Workspace getWorkspace() { return workspace; }
+    public void setWorkspace(Workspace workspace) { this.workspace = workspace; }
 }
