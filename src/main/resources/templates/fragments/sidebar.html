@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<div th:fragment="sidebar" id="sidebar" style="width:250px; min-height:100vh; background:#191919;" class="d-flex flex-column p-3">
+
+    <h5 class="fw-bold mb-4" style="color:#ffffff;">Folio</h5>
+
+    <!-- Workspaces -->
+    <p class="text-uppercase fw-semibold mb-2" style="color:#999; font-size:0.75rem;">Workspaces</p>
+    <ul class="nav flex-column mb-4">
+        <li class="nav-item">
+            <a href="/workspaces" class="nav-link" style="color:#ccc;">All Workspaces</a>
+        </li>
+    </ul>
+
+    <!-- Pages -->
+    <p class="text-uppercase fw-semibold mb-2" style="color:#999; font-size:0.75rem;">Pages</p>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a href="/pages" class="nav-link" style="color:#ccc;">All Pages</a>
+        </li>
+        <li class="nav-item">
+            <a href="/pages/new" class="nav-link" style="color:#ccc;">+ New Page</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
