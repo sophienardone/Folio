@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Workspaces</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold">Workspaces</h1>
+        <a href="/workspaces/new" class="btn btn-dark">+ New Workspace</a>
+    </div>
+    <div class="list-group">
+        <div th:each="workspace : ${workspaces}" class="list-group-item d-flex justify-content-between align-items-center">
+            <a th:href="@{/workspaces/{id}(id=${workspace.id})}" th:text="${workspace.name}" class="text-decoration-none text-dark fw-semibold"></a>
+            <a th:href="@{/workspaces/delete/{id}(id=${workspace.id})}" class="btn btn-sm btn-outline-danger">Delete</a>
+        </div>
+    </div>
+    <p th:if="${#lists.isEmpty(workspaces)}" class="text-muted mt-3">No workspaces yet. Create one!</p>
+</div>
+</body>
+</html>
